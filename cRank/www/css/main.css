@@ -233,6 +233,9 @@ ion-side-menu {
   font-size: 1.8em;
   font-weight: bolder; }
 
+#cRankPhoto {
+  margin-top: -40px; }
+
 #rank.pane {
   background: #7474BF !important;
   /* Old browsers */
