@@ -8,12 +8,14 @@ var rename = require('gulp-rename');
 var sh = require('shelljs');
 
 var paths = {
-  sass: ['./scss/**/*.scss']
+  ionic_sass: ['./scss/**/*.scss'],
+  app_sass: ['./www/sass/*.scss']
 };
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['ionic_sass', 'app_sass']);
+gulp.task('dev', ['default', 'watch']);
 
-gulp.task('sass', function(done) {
+gulp.task('ionic_sass', function(done) {
   gulp.src('./scss/ionic.app.scss')
     .pipe(sass())
     .on('error', sass.logError)
@@ -26,8 +28,21 @@ gulp.task('sass', function(done) {
     .on('end', done);
 });
 
+gulp.task('app_sass', function(done) {
+  gulp.src('./www/sass/main.scss')
+    .pipe(sass())
+    .on('error', sass.logError)
+    .pipe(gulp.dest('./www/css/'))
+    .pipe(minifyCss({
+      keepSpecialComments: 0
+    }))
+    .pipe(rename({ extname: '.min.css' }))
+    .pipe(gulp.dest('./www/css/'))
+    .on('end', done);
+});
+
 gulp.task('watch', function() {
-  gulp.watch(paths.sass, ['sass']);
+  gulp.watch([paths.ionic_sass, paths.app_sass], ['default']);
 });
 
 gulp.task('install', ['git-check'], function() {
