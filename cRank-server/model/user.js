@@ -20,9 +20,17 @@ var userSchema = new Schema({
 		required: 'Wtf. Need password yo.'
 	}, 
 	totalCarbon: Number,
-	vehicleId: {
-		type: Number,
-		default: null
+	vehicle: {
+		vehicleId: Number,
+		year: Number,
+		make: String,
+		model: String,
+		options: String,
+		meta: {
+			co2: Number, //tailpipe CO2 in grams/mile for fuelType1
+			mpg: Number, //combined MPG for fuelType1
+			ghg: Number, //EPA GHG score (-1 = Not available)
+		}
 	}
 });
 
