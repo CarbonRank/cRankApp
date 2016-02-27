@@ -4,7 +4,7 @@
   "proxies": [
     {
       "path": "/api",
-      "proxyUrl": "http://crank-server.herokuapp.com/api"
+      "proxyUrl": "http://localhost:3000/api"
     }
   ]
 }
