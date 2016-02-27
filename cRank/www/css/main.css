@@ -198,7 +198,22 @@ ion-side-menu {
     margin-top: 7.5%; }
 
 #userInfo.pane {
-  background: #43CB4B !important; }
+  background: #86AECC !important;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #86AECC 0%, #F3F6F8 100%) !important;
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #86AECC), color-stop(100%, #F3F6F8)) !important;
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #86AECC 0%, #F3F6F8 100%) !important;
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #86AECC 0%, #F3F6F8 100%) !important;
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #86AECC 0%, #F3F6F8 100%) !important;
+  /* IE10+ */
+  background: linear-gradient(to bottom, #86AECC 0%, #F3F6F8 100%) !important;
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ) !important;
+  /* IE6-9 */ }
   #userInfo.pane .user-info-next {
     transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2s;
     -webkit-transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2s; }
@@ -214,6 +229,15 @@ ion-side-menu {
     text-align: center;
     margin-top: 2.5%;
     padding: 10px; }
+
+#mess {
+  text-align: center;
+  margin-top: 20%;
+  font-size: 1.8em;
+  font-weight: bolder; }
+
+#cRankPhoto {
+  margin-top: -40px; }
 
 #rank.pane {
   background: #7474BF !important;
