@@ -21,6 +21,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('X-HTTP-Method-Override'));
 
 app.use('/api/vehicle', vehicleRoute);
+app.use('/api/user', userRoute);
 
 app.listen(port);
 
