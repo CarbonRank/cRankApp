@@ -1,4 +1,7 @@
 app.controller('DriveDrivingCtrl', function($scope, $ionicPlatform) {
-	console.log("in drive start");
+	
+	// $scope.$on('initDriving', function(){
+	// 	console.log("init driving");
+	// });
 
 });
