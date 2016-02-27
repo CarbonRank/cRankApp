@@ -1,27 +1,45 @@
 <ion-header-bar align-title="center" class="bar bar-header bar-stable">
-  <h1 class="title">Vehicle Registration</h1>
+  <h1 class="title" >Vehicle Registration</h1>
 </ion-header-bar>
-<ion-content ng-controller="RegisterCtrl">
-	<div >
+<ion-content ng-controller="RegisterCtrl" class="padding">
+	<form >
+      <br><br>
+
+      <label class="item item-input item-select">
+      <div class="input-label">Vehicle Year</div>
   		<select ng-model="vehicleYear" ng-options="year for year in vehicleYearSelection" data-ng-change="getMake()">
-    		<option value="">Select Car Year</option>
+    		<option value=""></option>
   		</select>
-  		<br>
+      </label>
+      <br><br>
 
+      <label class="item item-input item-select">
+      <div class="input-label">Vehicle Make</div>
   		<select ng-model="vehicleMake" ng-options="make for make in vehicleMakeSelection" data-ng-change="getModel()">
-    		<option value="">Select Car Make</option>
+    		<option value=""></option>
   		</select>
-  		<br>
+      </label>
+      <br><br>
 
+      <label class="item item-input item-select">
+      <div class="input-label">Vehicle Model</div>
   		<select ng-model="vehicleModel" ng-options="model for model in vehicleModelSelection" data-ng-change="getSpecific()">
-    		<option value="">Select Car Model</option>
+    		<option value=""></option>
   		</select>
+      </label>
   		<br>
 
+      <label class="item item-input item-select">
+      <div class="input-label">Vehicle Detail</div>
   		<select ng-model="vehicleSpecific" ng-options="specific.text for specific in vehicleSpecificSelection" ng-change="getVehicleId()">
-    		<option value="">Select Car Specifics</option>
+    		<option value=""></option>
   		</select>
-  	</div>
+      </label>
+      <br><br>
+  	</form>
+    <br><br>
 
-
+    <div class="bar bar-footer bar-stable user-info-next" ng-click="sendUserData()">
+      <div class="title">Complete Registration</div>
+    </div>
 </ion-content>

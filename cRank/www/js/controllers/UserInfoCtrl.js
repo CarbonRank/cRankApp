@@ -1,4 +1,3 @@
-
 app.controller('UserInfoCtrl', function($scope, $http, $state, UserService) {
 
 	console.log("userinfo scope", $scope);
@@ -7,5 +6,4 @@ app.controller('UserInfoCtrl', function($scope, $http, $state, UserService) {
 		UserService.setUserInfo($scope.username, $scope.firstName, $scope.lastName, $scope.password);
 		$state.go('registration');
 	};
-
 });
