@@ -10,20 +10,20 @@ router.get('/', function(req, res, next) {
 });
 
 //register a new user
-router.post('/', function(req, res, next) {
-    var user = req.body;
-    if(isValidUser(user)) {
-        User.findOne({username: user.username}, function(err, user) {
-            if(err) res.send(err);
+router.post('/newuser', function(req, res, next) {
+    var userData = req.body;
+    if(isValidUser(userData)) {
+        User.findOne({username: userData.username}, function(err, user) {
+            if(err) {console.log('err: ', err);res.send(err);return;}
             if(user) {
-                console.log('user already exists. user: ' + username);
+                console.log('user already exists. user: ' + userData.username);
                 res.send(false);
             } else {
                 var newUser = new User();
-                newUser.username = user.username;
-                newUser.firstName = user.firstName;
-                newUser.lastName = user.lastName;
-                newUser.password = newUser.generateHash(user.password);
+                newUser.username = userData.username;
+                newUser.firstName = userData.firstName;
+                newUser.lastName = userData.lastName;
+                newUser.password = newUser.generateHash(userData.password);
                 newUser.save(function(err) {
                     if(err) res.send(err);
                     else {
@@ -33,16 +33,39 @@ router.post('/', function(req, res, next) {
             }
         });
     } else {
-        res.send(false);
+        res.send('not a valid user. check data');
     }
+});
+
+//login
+router.post('/login', function(req, res, next) {
+    var userData = req.body;
+    if(!userData.username || !userData.password) {
+        res.send(false);
+        return;
+    }
+    User.findOne({username: userData.username}, function(err, user) {
+        if(err) {res.send(err);return;}
+        if(!user) {
+            console.log('user does not exist');
+            res.send("user does not exist.");
+            return;
+        }
+        if (!user.validPassword(userData.password)){
+            res.send("wrong password");
+            return;
+        }
+        res.send(user);
+    });
 });
 
 function isValidUser(user) {
     if(!user.username) return false;
-    if(!user.username.length < 4) return false;
-    if(!user.password.length < 4) return false;
+    if(user.username.length < 4) return false;
+    if(!user.password) return false;
+    if(user.password.length < 4) return false;
     if(!user.firstName) return false;
-    if(!usern.lastName) return false;
+    if(!user.lastName) return false;
     return true;
 }
 
