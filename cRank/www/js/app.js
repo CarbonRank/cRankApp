@@ -41,14 +41,12 @@ var app = angular.module('cRank', ['ionic', 'cRank.services', 'ngCordova', 'uiGm
 
   .state('userInfo', {
     url: '/userInfo',
-    templateUrl : 'templates/userInfo.html',
-    controller: 'UserInfoCtrl'
+    templateUrl : 'templates/userInfo.html'
   })
 
   .state('registration', {
     url: '/registration',
-    templateUrl : 'templates/register.html',
-    controller: 'RegisterCtrl'
+    templateUrl : 'templates/register.html'
   })
 
   .state('main.drive', {
@@ -72,23 +70,23 @@ var app = angular.module('cRank', ['ionic', 'cRank.services', 'ngCordova', 'uiGm
   })
 
   .state('main.rank', {
-      url: '/rank',
-      views: {
-        'tab-rank': {
-          templateUrl: 'templates/tab-rank.html',
-          controller: 'RankCtrl'
-        }
+    url: '/rank',
+    views: {
+      'tab-rank': {
+        templateUrl: 'templates/tab-rank.html',
+        controller: 'RankCtrl'
       }
-    })
-    .state('main.activity', {
-      url: '/activity',
-      views: {
-        'tab-activity': {
-          templateUrl: 'templates/tab-activity.html',
-          controller: 'ActivityCtrl'
-        }
+    }
+  })
+  .state('main.activity', {
+    url: '/activity',
+    views: {
+      'tab-activity': {
+        templateUrl: 'templates/tab-activity.html',
+        controller: 'ActivityCtrl'
       }
-    })
+    }
+  })
 
   .state('main.stats', {
     url: '/stats',
