@@ -13,7 +13,42 @@ h1,h2,h3,h4,h5,h6,
 	@include vertical-align();
 }
 
-ion-side-menu, ion-side-menus {
+.tab-nav.tabs {
+	.tab-item {
+		&.tab-item-active {
+			color: $color-blue;
+		}
+	}
+}
+
+ion-side-menu {
+	background: #3C3C3C;
+
+	ion-header-bar {
+		&.bar-header {
+			background: #3C3C3C !important;
+			border:0;
+		}
+	}
+
+	.item {
+		border:0;
+
+		.item-content {
+			background-color: #616161;
+			border:0;
+			color: #fff;
+
+			&.activated {
+				background-color: darken(#616161, 10%);
+				border: 0;
+			}
+		}
+	}
+
+	.scroll-content {
+		background: #3C3C3C;
+	}
 }
 
 .table-container {
@@ -29,7 +64,7 @@ ion-side-menu, ion-side-menus {
 }
 
 .pane, .view {
-	@include linearGradient(#43CB4B, #0079A8);
+	@include linearGradient($color-green, $color-blue);
 	// background: transparent !important;
 }
 
