@@ -40,6 +40,7 @@ router.post('/', function(req, res, next) {
             newUser.lastName = data.lastName;
             newUser.password = newUser.generateHash(data.password);
             newUser.imgurl = data.imgurl;
+            newUseer.totalCarbon = 0;
 
             var url = 'http://www.fueleconomy.gov/ws/rest/vehicle/'+data.vehicleid;
             request(url, function(error, response, body) {
