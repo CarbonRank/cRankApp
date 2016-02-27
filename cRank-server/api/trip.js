@@ -27,13 +27,13 @@ router.post('/', function(req, res, next) {
             function(cb) {
                 console.log('saved user?');
                 newTrip.save(function (err) {
-                    if(err) {res.send(err);return;}
+                    if(err) {res.send(false);return;}
                     res.send(newTrip);
                 });
             }
         );
     } else {
-        res.send('not valid trip. check data');
+        res.send(false);
     }
 });
 
@@ -51,7 +51,7 @@ function isValidTrip(trip) {
     if(!trip.userid) return false;
     if(!trip.startTime) return false;
     if(!trip.endTime) return false;
-    if(!trip.totalTripC) return false;
+    if(trip.totalTripC != null) return false;
     return true;
 }
 
