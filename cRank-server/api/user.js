@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var User = require('../model/user');
+var request = require('request');
+var parseString = require('xml2js').parseString; 
 
 //get all users, because why not
 router.get('/', function(req, res, next) {
@@ -11,38 +13,96 @@ router.get('/', function(req, res, next) {
 
 //register a new user
 router.post('/', function(req, res, next) {
-    var user = req.body;
-    if(isValidUser(user)) {
-        User.findOne({username: user.username}, function(err, user) {
+    var data = req.body;
+    if(isValidUser(data)) {
+        User.findOne({username: data.username}, function(err, user) {
             if(err) res.send(err);
             if(user) {
-                console.log('user already exists. user: ' + username);
+                console.log('user already exists. user: ' + data.username);
                 res.send(false);
-            } else {
-                var newUser = new User();
-                newUser.username = user.username;
-                newUser.firstName = user.firstName;
-                newUser.lastName = user.lastName;
-                newUser.password = newUser.generateHash(user.password);
-                newUser.save(function(err) {
-                    if(err) res.send(err);
-                    else {
-                        res.send(newUser);
+                return;
+            } 
+
+            var newUser = new User();
+            newUser.username = data.username;
+            newUser.firstName = data.firstName;
+            newUser.lastName = data.lastName;
+            newUser.password = newUser.generateHash(data.password);
+
+            var url = 'http://www.fueleconomy.gov/ws/rest/vehicle/'+data.vehicleid;
+            request(url, function(error, response, body) {
+                parseString(body, function(err, result) {
+                    if(err) {res.send(err);return;}
+                    var vehicle = {
+                        vehicleId: data.vehicleid,
+                        year: parseInt(result.vehicle.year[0]),
+                        make: result.vehicle.make[0],
+                        model: result.vehicle.model[0],
+                        meta: {
+                            co2: result.vehicle.co2TailpipeGpm[0], //tailpipe CO2 in grams/mile for fuelType1
+                            mpg: result.vehicle.comb08[0], //combined MPG for fuelType1
+                            ghg: result.vehicle.ghgScore[0] //EPA GHG score (-1 = Not available)
+                        }
                     }
-                })
-            }
+                    newUser.vehicle = vehicle;
+                    newUser.save(function (err) {
+                        if(err) {res.send(err);return;}
+                        res.send(newUser);
+                    });   
+                });
+            });  
         });
     } else {
         res.send(false);
     }
 });
 
+//add vehicle to a user
+router.post('/addvehicle', function(req, res, next) {
+    var userid = req.query.userid;
+    var vehicleid = req.query.vehicleid;
+    if(!userid || !vehicleid) {
+        res.send('missing userid or vehicleid');
+        return;
+    }
+    var url = 'http://www.fueleconomy.gov/ws/rest/vehicle/'+vehicleid;
+    User.findById(userid, function(err, user) {
+        if(err) {res.send(err);return;}
+        if(!user) {
+            res.send("user does not exist.");
+            return;
+        }
+        request(url, function(error, response, body) {
+            parseString(body, function(err, result) {
+                if(err) {res.send(err);return;}
+                var vehicle = {
+                    vehicleId: vehicleid,
+                    year: parseInt(result.vehicle.year[0]),
+                    make: result.vehicle.make[0],
+                    model: result.vehicle.model[0],
+                    meta: {
+                        co2: result.vehicle.co2TailpipeGpm[0], //tailpipe CO2 in grams/mile for fuelType1
+                        mpg: result.vehicle.comb08[0], //combined MPG for fuelType1
+                        ghg: result.vehicle.ghgScore[0] //EPA GHG score (-1 = Not available)
+                    }
+                }
+                user.vehicle = vehicle;
+                user.save(function (err) {
+                    if(err) {res.send(err);return;}
+                    res.send(user);
+                });   
+            });
+        });
+    });
+});
+
 function isValidUser(user) {
     if(!user.username) return false;
-    if(!user.username.length < 4) return false;
-    if(!user.password.length < 4) return false;
+    if(user.username.length < 4) return false;
+    if(!user.password) return false;
+    if(user.password.length < 4) return false;
     if(!user.firstName) return false;
-    if(!usern.lastName) return false;
+    if(!user.lastName) return false;
     return true;
 }
 
