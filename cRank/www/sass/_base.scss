@@ -115,3 +115,37 @@ ion-side-menu, ion-side-menus {
 		}
 	}
 }
+
+#noAccount{
+	text-align:center;
+	font-size: 1.5em;
+	margin-top: 8.5%;
+	@include hoverAction();
+}
+
+#logIn.pane {
+	background: #43CB4B !important;
+
+	h1{
+		text-align: center;
+		margin-top: 10%;
+	}
+
+	.user-info-next {
+		@include hoverAction();
+	}
+
+	#logInUser{
+		margin-top: 15%;
+	}
+
+	input {
+		width:100%;
+		text-align: center; 
+		margin-top: 2.5%;
+		padding: 10px;
+		margin-top: 7.5%;
+	}
+}
+
+

@@ -1,0 +1,32 @@
+<ion-view view-title="Log In" id="logIn">
+	<ion-content class="padding" scroll="false">
+
+	<h1>cRank</h1>
+
+	<form name="regForm">
+
+		<input type="text" ng-model="logData.username" name="username" placeholder="Username"  ng-minlength="4" id="logInUser" required/>
+		<div ng-messages="logForm.username.$error" ng-if="logForm.username.$dirty">
+			<div ng-message="required" class="errorMess">This field is required</div>
+		</div>
+
+
+		<input type="password" ng-model="logData.password" name="password" placeholder="Password" ng-minlength="4" required />
+		<div ng-messages="logForm.password.$error" ng-if="logForm.password.$dirty">
+  			<div ng-message="required" class="errorMess">This field is required</div>
+		</div>
+	
+	</form>	
+
+		<div id="noAccount" ng-click="goReg()">Don't have an account? Sign up here!</div>
+
+		<div>{{message}}</div>
+
+
+	</ion-content>
+
+	<div class="bar bar-footer bar-stable user-info-next" ng-click="processLoginForm()">
+	  <div class="title">LOGIN</div>
+	</div>
+
+</ion-view>

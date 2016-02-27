@@ -65,6 +65,12 @@ var app = angular.module('cRank', ['ionic', 'cRank.services', 'ngCordova', 'uiGm
     }
   })
 
+  .state('login', {
+    url: '/login',
+    templateUrl : 'templates/login.html',
+    controller: 'LoginCtrl'
+  })
+
   .state('main.rank', {
       url: '/rank',
       views: {
@@ -94,7 +100,8 @@ var app = angular.module('cRank', ['ionic', 'cRank.services', 'ngCordova', 'uiGm
     }
   });
 
+
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/main/drive');
+  $urlRouterProvider.otherwise('/login');
 
 });
