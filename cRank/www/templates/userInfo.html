@@ -1,5 +1,5 @@
 <ion-view view-title="Registration: User Info" id="userInfo">
-	<ion-content class="padding">
+	<ion-content class="padding" scroll="false">
 		<form>
 
 			<input type="text" ng-model="formData.username" name="username" placeholder="Username" 
@@ -18,6 +18,8 @@
 			style="width:100%;padding-top: 2.5%; padding-bottom: 2.5%; margin-top: 2.5%;">Next ></button> -->
 
 		</form>
+
+		<div id="errorStatement">{{error}}</div>
 		
 	</ion-content>
 	<div class="bar bar-footer bar-stable user-info-next" ng-click="processForm()">
