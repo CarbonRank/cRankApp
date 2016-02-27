@@ -11,6 +11,24 @@ router.get('/', function(req, res, next) {
     });
 });
 
+//get all users sorted by corbon fp
+router.get('/sorted', function(req, res, next) {
+    User.find({}).sort({totalCarbon: 1}).exec(function(err, users) {
+        res.send(users);
+    });
+});
+
+//delete all users **DANGER DANGER**
+router.delete('/', function(req, res, next) {
+    if(req.query.supersecret === "1234") {
+        User.remove({}, function(data) {
+            res.send(data);
+        });
+    } else {
+        res.send('no.');
+    }
+});
+
 
 
 /*register a new user 
