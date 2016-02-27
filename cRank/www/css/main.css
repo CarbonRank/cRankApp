@@ -1,0 +1,29 @@
+.vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+.container.center {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center; }
+
+#drive_start {
+  display: table !important;
+  width: 100% !important;
+  height: 90% !important; }
+  #drive_start #start_drive {
+    text-align: center; }
+    #drive_start #start_drive button {
+      border: none;
+      background: green;
+      color: #fff;
+      width: 200px;
+      height: 200px;
+      border-radius: 100px;
+      -webkit-transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2;
+      transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2; }
+      #drive_start #start_drive button:active {
+        background: #00b300; }

@@ -1,3 +1,57 @@
+//mixins
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin transition(){
+	-webkit-transition: all $bezier 0.2;
+	transition: all $bezier 0.2;
+}
+
+//variables
+$bezier:		cubic-bezier(.43,.84,.79,.99);
+
+
 body {
 	//nothing here
+}
+
+.vertical-align {
+	@include vertical-align();
+}
+
+.container {
+	&.center {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+	}
+}
+
+#drive_start {
+	display: table !important;
+	width: 100% !important;
+	height: 90% !important;
+
+	#start_drive {
+		text-align: center;
+
+		button {
+			border: none;
+			background: green;
+			color: #fff;
+			width: 200px;
+			height: 200px;
+			border-radius: 100px;
+			@include transition();
+
+			&:active {
+				background: lighten(green, 10%);
+			}
+		}
+	}
 }

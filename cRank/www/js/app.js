@@ -39,30 +39,22 @@ var app = angular.module('cRank', ['ionic', 'cRank.services'])
     controller: 'MainCtrl'
   })
 
-  // .state('main.tabs', {
-  //      url: '/tabs',
-  //      views: {
-  //          'main': {
-  //              templateUrl: 'templates/tabs.html',
-  //              controller : 'TabCtrl'
-  //          }
-  //      }
-  // })
-
-  // .state('tab', {
-  //   url: '/tab',
-  //   abstract: true,
-  //   templateUrl: 'templates/tabs.html'
-  // })
-
-  // Each tab has its own nav history stack:
+  .state('register', {
+    url: '/register',
+    templateUrl : 'templates/register.html',
+    controller: 'RegisterCtrl'
+  })
 
   .state('main.drive', {
     url: '/drive',
     views: {
       'tab-drive': {
         templateUrl: 'templates/tab-drive.html',
-        controller: 'DriveCtrl'
+        controller: 'DriveCtrl'/*,
+        views: {
+          start: { templateUrl: 'templates/drive/drive-start.html'},
+          driving: { templateUrl: 'templates/drive/drive-driving.html'}
+        }*/
       }
     }
   })
