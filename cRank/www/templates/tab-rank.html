@@ -2,10 +2,10 @@
   <ion-content class="padding">
     <div class="list card">
 
-      <a class="item item-avatar" href="#" ng-repeat=" n in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20]">
-        <img src="http://api.randomuser.me/portraits/women/38.jpg">
-        <h2>Zach Milrod</h2>
-        <p>2342.5 Carbon g's</p>
+      <a class="item item-avatar" href="#" ng-repeat="user in rankedUsers">
+        <img src="http://api.randomuser.me/portraits/women/49.jpg">
+        <h2>{{user.firstName}} {{user.lastName}}</h2>
+        <p>{{user.totalCarbon}} grams of Carbon</p>
         <span class="rank">{{$index + 1}}</span>
       </a>
     </div>
