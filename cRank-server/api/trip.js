@@ -19,6 +19,7 @@ router.post('/', function(req, res, next) {
         newTrip.startTime = trip.startTime;
         newTrip.endTime = trip.endTime;
         newTrip.totalTripC = trip.totalTripC;
+        newTrip._user = trip.userid;
         User.update(
             { _id: trip.userid }, 
             { $inc: { totalCarbon: trip.totalTripC}},
@@ -37,7 +38,11 @@ router.post('/', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
-    Trip.find({}, function(err, trips) {
+    Trip
+    .find({})
+    .populate('_user')
+    .exec(function (err, trips) {
+        if (err) res.send(false);
         res.send(trips);
     });
 });
