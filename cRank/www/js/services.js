@@ -15,6 +15,7 @@ angular.module('cRank.services', [])
     },
     setUser: function(newUser) {
       user = newUser;
+      window.localStorage['user'] = JSON.stringify(user);
     },
     getUser: function() {
       return user;
