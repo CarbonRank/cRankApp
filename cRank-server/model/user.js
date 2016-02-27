@@ -19,7 +19,10 @@ var userSchema = new Schema({
 		type: String,
 		required: 'Wtf. Need password yo.'
 	}, 
-	totalCarbon: Number,
+	totalCarbon: {
+		type: Number,
+		default: function() {return Math.floor(Math.random() * 3000) + 100;} //set this to 0 for production
+	},
 	imgurl: String,
 	vehicle: {
 		vehicleId: Number,

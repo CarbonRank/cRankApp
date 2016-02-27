@@ -30,7 +30,7 @@ router.post('/', function(req, res, next) {
             if(err) res.send(err);
             if(user) {
                 console.log('user already exists. user: ' + data.username);
-                res.send(false);
+                res.send('user already exists.');
                 return;
             } 
 
