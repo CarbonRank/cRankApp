@@ -1,11 +1,14 @@
 <ion-view view-title="Activity">
-  <ion-content class="padding">
-    <div class="card" ng-repeat="trip in usersTrips">
-      <div class="item item-text-wrap">
-      	<h3>{{trip._user.firstName}} {{trip._user.lastName}}</h3>
-        <h3>{{trip.totalTripC}} grams of Carbon</h3>
-        <h4>{{trip.startTime | date:'medium' }}</h4>
-      </div>
-    </div>
-  </ion-content>
+	<ion-nav-buttons side="right">
+	  <button class="button" id="logout" ng-click="logout()"><i class="ion ion-log-out"></i></button>
+	</ion-nav-buttons>
+	<ion-content class="padding">
+	<div class="card" ng-repeat="trip in usersTrips">
+	  <div class="item item-text-wrap">
+	  	<h3>{{trip._user.firstName}} {{trip._user.lastName}}</h3>
+	    <h3>{{trip.totalTripC}} grams of Carbon</h3>
+	    <h4>{{trip.startTime | date:'medium' }}</h4>
+	  </div>
+	</div>
+	</ion-content>
 </ion-view>
