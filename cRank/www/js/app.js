@@ -39,8 +39,14 @@ var app = angular.module('cRank', ['ionic', 'cRank.services', 'ngCordova', 'uiGm
     controller: 'MainCtrl'
   })
 
-  .state('register', {
-    url: '/register',
+  .state('userInfo', {
+    url: '/userInfo',
+    templateUrl : 'templates/userInfo.html',
+    controller: 'UserInfoCtrl'
+  })
+
+  .state('registration', {
+    url: '/registration',
     templateUrl : 'templates/register.html',
     controller: 'RegisterCtrl'
   })

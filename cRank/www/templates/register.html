@@ -1,1 +1,20 @@
-register!!!!
+<ion-header-bar align-title="center" class="bar bar-header bar-stable">
+  <h1 class="title">Vehicle Registration</h1>
+</ion-header-bar>
+<ion-content>
+	<div ng-controller="RegisterCtrl">
+  		<select ng-model="vehicleYear" ng-options="year for year in vehicleYearSelection" data-ng-change="getMake()">
+    		<option value="">Select Car Year</option>
+  		</select>
+  		<br>
+
+  		<select ng-model="vehicleMake" ng-options="make for make in vehicleMakeSelection" data-ng-change="getModel()">
+    		<option value="">Select Car Make</option>
+  		</select>
+  		<br>
+
+  		<select ng-model="vehicleModel" ng-options="model for model in vehicleModelSelection" >
+    		<option value="">Select Car Model</option>
+  		</select>
+  	</div>
+</ion-content>
