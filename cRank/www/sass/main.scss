@@ -1,3 +1,6 @@
+//variables
+$bezier: cubic-bezier(.43,.84,.79,.99);
+
 //mixins
 @mixin vertical-align {
   position: relative;
@@ -8,50 +11,156 @@
 }
 
 @mixin transition(){
-	-webkit-transition: all $bezier 0.2;
-	transition: all $bezier 0.2;
+	-webkit-transition: all 0.2 !important;
+	transition: all 0.2 !important;
 }
 
-//variables
-$bezier:		cubic-bezier(.43,.84,.79,.99);
+@mixin linearGradient($top, $bottom){
+    background: $top !important; /* Old browsers */
+    background: -moz-linear-gradient(top,  $top 0%, $bottom 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $top 0%,$bottom 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $top 0%,$bottom 100%) !important; /* IE10+ */
+    background: linear-gradient(to bottom,  $top 0%,$bottom 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ) !important; /* IE6-9 */
+}
+@mixin hoverAction(){
+	    transition: all $bezier 0.2s;
+	    -webkit-transition: all $bezier 0.2s;
+
+	    &:hover {
+	    	transform: scale(1.05,1.05);
+			// background: darken($accent-color, 5);
+	    }
+	    &:active {
+	    	transform: scale(0.97,0.97);
+			// background: darken($accent-color, 10);
+			outline: 0;
+	    }
+	    &:focus {
+	    	outline: 0;
+	    }
+}
+
+
+
+//fonts
+$sans-serif: "Source Sans Pro";
 
 
 body {
-	//nothing here
+	font-family: $sans-serif !important;
+	// @include linearGradient(#43CB4B, #0079A8);
+	// background-color: red !important;
+}
+
+h1,h2,h3,h4,h5,h6,
+.h1,.h2,.h3,.h4,.h5,.h6,input, button, select, textarea{
+  font-family: $sans-serif !important;
 }
 
 .vertical-align {
 	@include vertical-align();
 }
 
-.container {
-	&.center {
+ion-side-menu, ion-side-menus {
+}
+
+.table-container {
+	display: table !important;
+	width: 100% !important;
+	height: 90% !important;
+
+	.center {
 		display: table-cell;
 		vertical-align: middle;
 		text-align: center;
 	}
 }
 
+.pane, .view {
+	@include linearGradient(#43CB4B, #0079A8);
+	// background: transparent !important;
+}
+
 #drive_start {
-	display: table !important;
-	width: 100% !important;
-	height: 90% !important;
+	width: 100%;
+	height: 100%;
 
 	#start_drive {
 		text-align: center;
 
 		button {
 			border: none;
-			background: green;
-			color: #fff;
+			background: #fff;
+			color: #000;
 			width: 200px;
 			height: 200px;
 			border-radius: 100px;
-			@include transition();
+			font-size: 18px;
+			opacity:1;
+			@include hoverAction();
 
 			&:active {
-				background: lighten(green, 10%);
+				opacity: 0.8;
 			}
+		}
+	}
+}
+#drive_driving {
+	height: 100%;
+
+	#end_drive {
+		margin: 10px;
+		padding: 10px;
+		border: 0;
+		background: #fff;
+		@include hoverAction();
+	}
+
+	#map {
+		height:60%;
+
+		.angular-google-map {
+			display:block;
+			height: 100%;
+		}
+
+		.angular-google-map-container { 
+			height: 100%; 
+		}
+	}
+	#driving_details {
+		height:40%;
+		background:#fff;
+		text-align:right;
+
+		table {
+			width: 100%;
+			height: 100%;
+
+			td { 
+				vertical-align: middle;
+				text-align: center;
+			}
+		}
+
+		.row {
+			height: 50%;
+
+			.col {
+				text-align: center;
+			}
+		}
+		.data {
+			display: inline-block;
+			text-align:right;
+		}
+		.metric {
+			font-size: 35px;
+			display:block;
+			padding-bottom:3px;
 		}
 	}
 }
