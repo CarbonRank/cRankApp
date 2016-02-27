@@ -1,14 +1,45 @@
 <ion-view view-title="Drive" id="drive">
-  <ion-content class="padding" scroll="false">
-    <div name="start" id="drive_start" ng-show="drive_state == 0" ng-controller="DriveStartCtrl">
-      <div class="container center">
-        <div id="start_drive">
-          <button on-click="startDriving();">Start Drive</button>
+  <ion-content class="" scroll="false">
+    <div name="start" id="drive_start" ng-show="!drive_state" ng-controller="DriveStartCtrl">
+      <div class="table-container">
+        <div id="start_drive" class="center">
+          <button ng-click="startDriving()">Start Drive</button>
         </div>
       </div>
     </div>
-    <div name="driving" ng-show="drive_state == 1" >
-      driving
+
+    <div name="driving" id="drive_driving" ng-show="drive_state" ng-controller="DriveDrivingCtrl">
+      <div id="map" ng-controller="MapCtrl" data-tap-disabled="true">
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' control='map.control'>
+          <ui-gmap-map-control template="templates/end-drive.html" refresh="true" position="top-right" controller="MapControlCtrl" index="-1"></ui-gmap-map-control>
+        </ui-gmap-google-map>
+      </div>
+      <div id="driving_details" class="padding">
+
+        <table>
+          <tr>
+            <td>
+              <div class="data">
+                <div class="metric">33.4</div>miles
+              </div>
+            </td>
+            <td>
+              <div class="data">
+                <div class="metric">44.6</div>g carbon
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="data">
+                <div class="metric">$5.26</div>est. cost
+              </div>
+            </td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
     </div>
   </ion-content>
 </ion-view>
+
