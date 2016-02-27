@@ -15,7 +15,7 @@ angular.module('cRank.services', [])
     },
     setUser: function(user) {
       user = user;
-    }
+    },
     getUser: function() {
       return user;
     }
