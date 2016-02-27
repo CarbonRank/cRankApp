@@ -1,15 +1,33 @@
 <ion-view view-title="Registration: User Info" id="userInfo">
-	<ion-content class="padding">
-		<form>
+	<ion-content class="padding" scroll="false">
+		<form name="regForm">
 
-			<input type="text" ng-model="formData.username" name="username" placeholder="Username"></input>
+			<input type="text" ng-model="formData.username" name="username" placeholder="Username"  ng-minlength="4" required/>
+			<div ng-messages="regForm.username.$error" ng-if="regForm.username.$dirty">
+  				<div ng-message="required" class="errorMess">This field is required</div>
+  				<div ng-message="minlength" class="errorMess">Username must be over 3 characters</div>
+			</div>
 			
-			<input type="text" ng-model="formData.firstName" name="firstName" placeholder="First Name"></input>
+			<input type="text" ng-model="formData.firstName" name="firstName" placeholder="First Name" ng-minlength="4" required />
+			<div ng-messages="regForm.firstName.$error" ng-if="regForm.firstName.$dirty">
+  				<div ng-message="required" class="errorMess">This field is required</div>
+  				<div ng-message="minlength" class="errorMess">Username must be over 3 characters</div>
+			</div>
 			
-			<input type="text" ng-model="formData.lastName" name="lastName" placeholder="Last Name"></input>
+			<input type="text" ng-model="formData.lastName" name="lastName" placeholder="Last Name"  ng-minlength="4" required />
+			<div ng-messages="regForm.lastName.$error" ng-if="regForm.lastName.$dirty">
+  				<div ng-message="required" class="errorMess">This field is required</div>
+  				<div ng-message="minlength" class="errorMess">Username must be over 3 characters</div>
+			</div>
 			
-			<input type="password" ng-model="formData.password" name="password" placeholder="Password"></input>
+			<input type="password" ng-model="formData.password" name="password" placeholder="Password" ng-minlength="4" required />
+			<div ng-messages="regForm.password.$error" ng-if="regForm.password.$dirty">
+  				<div ng-message="required" class="errorMess">This field is required</div>
+  				<div ng-message="minlength" class="errorMess">Username must be over 3 characters</div>
+			</div>
 		</form>
+
+		<!-- <div id="errorStatement">{{error}}</div> -->
 		
 	</ion-content>
 	<div class="bar bar-footer bar-stable user-info-next" ng-click="processForm()">

@@ -106,7 +106,7 @@ router.post('/login', function(req, res, next) {
 //             end_dateTime: end,
 //             total_miles: miles,
 //             total_CO2: carbon,
-//             total_fuelCost: miles * price per mile (or whatever)
+//             total_fuelCost: miles //* price per mile (or whatever)
 //         });
 
 //         newTrip.save(function(err) {
