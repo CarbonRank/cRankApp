@@ -30,6 +30,7 @@ router.get('/make', function(req, res, next) {
                 if(!err) {
                     var response = {results:[]}
                     var arr = result.menuItems.menuItem;
+                    if(!arr) return;
                     for(var i = 0; i<arr.length; i++) {
                         response.results.push(arr[i].value[0]);
                     }
@@ -79,7 +80,7 @@ router.get('/options', function(req, res, next) {
                     var arr = result.menuItems.menuItem;
                     for(var i = 0; i<arr.length; i++) {
                         var option = {
-                            vechicleId: parseInt(arr[i].value[0]),
+                            vehicleid: parseInt(arr[i].value[0]),
                             text: arr[i].text[0]
                         }
                         response.results.push(option);
