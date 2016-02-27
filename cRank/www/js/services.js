@@ -13,8 +13,8 @@ angular.module('cRank.services', [])
     setUserVehicleId: function(id) {
       user.vehicleid = id;
     },
-    setUser: function(user) {
-      user = user;
+    setUser: function(newUser) {
+      user = newUser;
     },
     getUser: function() {
       return user;
@@ -22,7 +22,7 @@ angular.module('cRank.services', [])
   };
 })
 
-.service("Motion", function(){
+.service("Motion", function(UserService){
   var d2r = function(deg){
     return deg * (Math.PI/180);
   };
@@ -47,25 +47,25 @@ angular.module('cRank.services', [])
     else return roundedNum;
   };
 
-  var calcData = function(pos){
-    var miles = getMiles(pos);
-    var GRAMS = 592.4666666666667, COST = 1.72; //TEMP
+  // var calcData = function(pos){
+  //   var miles = getMiles(pos);
+  //   var GRAMS = 592.4666666666667, COST = 1.72; //TEMP
 
-    var carbon = miles * GRAMS;
+  //   var carbon = miles * GRAMS;
 
-    var est_cost = 0;
+  //   var est_cost = 0;
 
-    return {
-      miles: miles,
-      carbon: carbon,
-      est_cost: est_cost
-    }
-  };
+  //   return {
+  //     miles: miles,
+  //     carbon: carbon,
+  //     est_cost: est_cost
+  //   }
+  // };
 
   var calculate = function(data){
     //lat1, long1, lat2, long2
     var posData = data.positionData;
-    var GRAMS = 592.4666666666667, COST = 1.72; //TEMP
+    var GRAMS = UserService.getUser().vehicle.meta.co2, COST = 1.72; //TEMP
 
     var totalMiles = 0;
 
@@ -101,8 +101,6 @@ angular.module('cRank.services', [])
   };
 
   return {
-    getMiles: getMiles,
-    calcData: calcData,
     calculate: calculate
   }
 });

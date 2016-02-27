@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function($scope, $http, $state) {
+app.controller('LoginCtrl', function($scope, $http, $state, UserService) {
 
 	$scope.message = "";
 	$scope.logData = {};
@@ -14,9 +14,10 @@ app.controller('LoginCtrl', function($scope, $http, $state) {
 			data    : $scope.logData  // pass in data as strings
 		})
 		.success(function(data) {
-			console.log("data", data);
+			console.log("LOGIN DATA", data);
 			if (data) {
 				$state.go('main.drive');
+				UserService.setUser(data);
 			} else {
 			   $scope.message = "Username or password is incorrect";
 			}

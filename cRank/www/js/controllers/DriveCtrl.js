@@ -1,5 +1,7 @@
-app.controller('DriveCtrl', function($scope, $state, $ionicModal) {
+app.controller('DriveCtrl', function($scope, $state, $ionicModal, UserService) {
 	$scope.drive_state = 0;
+
+	console.log("UserService", UserService.getUser());
 
 	$ionicModal.fromTemplateUrl('templates/post-drive.html', {
 		scope: $scope,
