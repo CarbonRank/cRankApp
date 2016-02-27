@@ -13,11 +13,16 @@
   		</select>
   		<br>
 
-  		<select ng-model="vehicleModel" ng-options="model for model in vehicleModelSelection" >
+  		<select ng-model="vehicleModel" ng-options="model for model in vehicleModelSelection" data-ng-change="getSpecific()">
     		<option value="">Select Car Model</option>
   		</select>
-  		</div>
   		<br>
+
+  		<select ng-model="vehicleSpecific" ng-options="specific.text for specific in vehicleSpecificSelection" >
+    		<option value="">Select Car Specifics</option>
+  		</select>
+  	</div>
+
 
 </ion-content>
 

@@ -2,9 +2,11 @@ app.controller('RegisterCtrl', function($scope, $http) {
     	$scope.vehicleYear = null;
     	$scope.vehicleMake = null;
     	$scope.vehicleModel = null;
+    	$scope.vehicleSpecific = null;
     	$scope.vehicleYearSelection = [];
     	$scope.vehicleMakeSelection = [];
     	$scope.vehicleModelSelection = [];
+    	$scope.vehicleSpecificSelection = [];
 
     	$http({
             method: 'GET',
@@ -28,7 +30,15 @@ app.controller('RegisterCtrl', function($scope, $http) {
             	url: '/api/vehicle/model?year=' + $scope.vehicleYear + '&make=' + $scope.vehicleMake,
     		}).success(function (result) {
         		$scope.vehicleModelSelection = result.results;
-        		console.log("result",result);
+    		});
+		}
+
+		$scope.getSpecific = function () {
+    		$http({
+            	method: 'GET',
+            	url: '/api/vehicle/options?year=' + $scope.vehicleYear + '&make=' + $scope.vehicleMake + '&model=' + $scope.vehicleModel,
+    		}).success(function (result) {
+        		$scope.vehicleSpecificSelection = result.results;
     		});
 		}
 	}
