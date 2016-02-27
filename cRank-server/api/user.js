@@ -35,7 +35,6 @@ body: {
     firstname
     lastname
     password
-    imgurl
     vehicleid 
 }
 */
@@ -55,8 +54,6 @@ router.post('/', function(req, res, next) {
             newUser.firstName = data.firstName;
             newUser.lastName = data.lastName;
             newUser.password = newUser.generateHash(data.password);
-            newUser.imgurl = data.imgurl;
-            newUser.totalCarbon = 0;
 
             var url = 'http://www.fueleconomy.gov/ws/rest/vehicle/'+data.vehicleid;
             request(url, function(error, response, body) {
@@ -107,41 +104,6 @@ router.post('/login', function(req, res, next) {
         res.send(user);
     });
 });
-
-
-// //end of trip, add trip and all its details to db for a specific user and update user's total carbon and miles
-// router.post('/addTrip', function (req, res, next) {
-//     var userID = req.query.userid;
-//     var carbon = req.query.carbon;
-//     var start = req.query.start;
-//     var end = req.query.end;
-//     var miles = req.query.miles;
-
-//     if(userID && carbon && start && end && miles){
-//         var newTrip = Trip({
-//             start_dateTime:  start,
-//             end_dateTime: end,
-//             total_miles: miles,
-//             total_CO2: carbon,
-//             total_fuelCost: miles //* price per mile (or whatever)
-//         });
-
-//         newTrip.save(function(err) {
-//             if (err) {
-//                 res.send(err);
-//             }
-//         });
-
-//         User.findByIdAndUpdate( {userID}, { total_Carbon : total_Carbon + carbon, total_miles : total_miles + miles}, function(err, user) {
-//             if(err) {
-//                 res.send(err);
-//             }
-//         });
-//     }
-//     else{
-//         res.send("missing field(s), check data");
-//     }
-// });
 
 //add vehicle to a user
 router.post('/addvehicle', function(req, res, next) {
