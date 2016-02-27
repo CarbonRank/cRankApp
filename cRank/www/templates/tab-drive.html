@@ -10,8 +10,8 @@
 
     <div name="driving" id="drive_driving" ng-show="drive_state" ng-controller="DriveDrivingCtrl">
       <div id="map" ng-controller="MapCtrl" data-tap-disabled="true">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom'>
-          <ui-gmap-map-control template="templates/end-drive.html" position="top-right" controller="MapControlCtrl" index="-1"></ui-gmap-map-control>
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' control='map.control'>
+          <ui-gmap-map-control template="templates/end-drive.html" refresh="true" position="top-right" controller="MapControlCtrl" index="-1"></ui-gmap-map-control>
         </ui-gmap-google-map>
       </div>
       <div id="driving_details" class="padding">
