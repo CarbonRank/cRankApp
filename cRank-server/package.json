@@ -1,0 +1,14 @@
+{
+  "name": "cRank-server",
+  "description": "cRank",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "~1.4.2",
+    "express": "~4.5.1",
+    "method-override": "~2.0.2",
+    "request": "^2.69.0"
+  }
+}
