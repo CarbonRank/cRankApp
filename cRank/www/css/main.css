@@ -212,6 +212,12 @@ ion-side-menu {
     margin-top: 2.5%;
     padding: 10px; }
 
+#mess {
+  text-align: center;
+  margin-top: 20%;
+  font-size: 1.8em;
+  font-weight: bolder; }
+
 #rank.pane {
   background: #7474BF !important;
   /* Old browsers */
