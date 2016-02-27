@@ -3,22 +3,29 @@ Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
 navigation history that also transitions its views in and out.
 -->
-<ion-tabs class="tabs-icon-top tabs-color-active-positive">
+<ion-view>
+  <ion-tabs class="tabs-icon-top tabs-color-active-positive">
 
-  <!-- Dashboard Tab -->
-  <ion-tab title="Status" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/dash">
-    <ion-nav-view name="tab-dash"></ion-nav-view>
-  </ion-tab>
+    <!-- Drive Tab -->
+    <ion-tab title="Drive" icon-off="ion-android-car" icon-on="ion-android-car" href="#/tab/drive">
+      <ion-nav-view name="tab-drive"></ion-nav-view>
+    </ion-tab>
 
-  <!-- Chats Tab -->
-  <ion-tab title="Chats" icon-off="ion-ios-chatboxes-outline" icon-on="ion-ios-chatboxes" href="#/tab/chats">
-    <ion-nav-view name="tab-chats"></ion-nav-view>
-  </ion-tab>
+    <!-- Rank Tab -->
+    <ion-tab title="Rank" icon-off="ion-trophy" icon-on="ion-trophy" href="#/tab/rank">
+      <ion-nav-view name="tab-rank"></ion-nav-view>
+    </ion-tab>
 
-  <!-- Account Tab -->
-  <ion-tab title="Account" icon-off="ion-ios-gear-outline" icon-on="ion-ios-gear" href="#/tab/account">
-    <ion-nav-view name="tab-account"></ion-nav-view>
-  </ion-tab>
+    <!-- Activity Tab -->
+    <ion-tab title="Activity" icon-off="ion-ios-pulse" icon-on="ion-ios-pulse-strong" href="#/tab/activity">
+      <ion-nav-view name="tab-activity"></ion-nav-view>
+    </ion-tab>
+
+    <!-- Stats Tab -->
+    <ion-tab title="Stats" icon-off="ion-stats-bars" icon-on="ion-stats-bars" href="#/tab/stats">
+      <ion-nav-view name="tab-stats"></ion-nav-view>
+    </ion-tab>
 
 
-</ion-tabs>
+  </ion-tabs>
+</ion-view>
