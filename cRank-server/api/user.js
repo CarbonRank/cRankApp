@@ -25,7 +25,7 @@ router.delete('/', function(req, res, next) {
             res.send(data);
         });
     } else {
-        res.send('no.');
+        res.send(false);
     }
 });
 
@@ -42,7 +42,7 @@ router.post('/', function(req, res, next) {
     var data = req.body;
     if(isValidUser(data)) {
         User.findOne({username: data.username}, function(err, user) {
-            if(err) res.send(err);
+            if(err) res.send(false);
             if(user) {
                 console.log('user already exists. user: ' + data.username);
                 res.send('user already exists.');
@@ -72,7 +72,7 @@ router.post('/', function(req, res, next) {
                     }
                     newUser.vehicle = vehicle;
                     newUser.save(function (err) {
-                        if(err) {res.send(err);return;}
+                        if(err) {res.send(false);return;}
                         res.send(newUser);
                     });   
                 });
@@ -92,13 +92,13 @@ router.post('/login', function(req, res, next) {
         return;
     }
     User.findOne({username: userData.username}, function(err, user) {
-        if(err) {res.send(err);return;}
+        if(err) {res.send(false);return;}
         if(!user) {
-            res.send("user does not exist.");
+            res.send(false);
             return;
         }
         if (!user.validPassword(userData.password)){
-            res.send("wrong password");
+            res.send(false);
             return;
         }
         res.send(user);
@@ -110,14 +110,14 @@ router.post('/addvehicle', function(req, res, next) {
     var userid = req.query.userid;
     var vehicleid = req.query.vehicleid;
     if(!userid || !vehicleid) {
-        res.send('missing userid or vehicleid');
+        res.send(false);
         return;
     }
     var url = 'http://www.fueleconomy.gov/ws/rest/vehicle/'+vehicleid;
     User.findById(userid, function(err, user) {
         if(err) {res.send(err);return;}
         if(!user) {
-            res.send("user does not exist.");
+            res.send(false);
             return;
         }
         request(url, function(error, response, body) {
