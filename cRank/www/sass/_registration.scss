@@ -1,0 +1,7 @@
+#userInfo.pane {
+	background: #43CB4B !important;
+
+	.user-info-next {
+		@include hoverAction();
+	}
+}

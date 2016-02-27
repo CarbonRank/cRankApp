@@ -1,0 +1,41 @@
+//mixins
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin transition(){
+	-webkit-transition: all 0.2 !important;
+	transition: all 0.2 !important;
+}
+
+@mixin linearGradient($top, $bottom){
+    background: $top !important; /* Old browsers */
+    background: -moz-linear-gradient(top,  $top 0%, $bottom 100%) !important; /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$top), color-stop(100%,$bottom)) !important; /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  $top 0%,$bottom 100%) !important; /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  $top 0%,$bottom 100%) !important; /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  $top 0%,$bottom 100%) !important; /* IE10+ */
+    background: linear-gradient(to bottom,  $top 0%,$bottom 100%) !important; /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ) !important; /* IE6-9 */
+}
+@mixin hoverAction(){
+	    transition: all $bezier 0.2s;
+	    -webkit-transition: all $bezier 0.2s;
+
+	    &:hover {
+	    	transform: scale(1.05,1.05);
+			// background: darken($accent-color, 5);
+	    }
+	    &:active {
+	    	transform: scale(0.97,0.97);
+			// background: darken($accent-color, 10);
+			outline: 0;
+	    }
+	    &:focus {
+	    	outline: 0;
+	    }
+}

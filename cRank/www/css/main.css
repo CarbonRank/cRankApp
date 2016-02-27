@@ -109,3 +109,16 @@ h1, h2, h3, h4, h5, h6,
       font-size: 35px;
       display: block;
       padding-bottom: 3px; }
+
+#userInfo.pane {
+  background: #43CB4B !important; }
+  #userInfo.pane .user-info-next {
+    transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2s;
+    -webkit-transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2s; }
+    #userInfo.pane .user-info-next:hover {
+      transform: scale(1.05, 1.05); }
+    #userInfo.pane .user-info-next:active {
+      transform: scale(0.97, 0.97);
+      outline: 0; }
+    #userInfo.pane .user-info-next:focus {
+      outline: 0; }
