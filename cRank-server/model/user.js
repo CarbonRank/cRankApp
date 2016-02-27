@@ -21,9 +21,22 @@ var userSchema = new Schema({
 	}, 
 	totalCarbon: {
 		type: Number,
-		default: function() {return Math.floor(Math.random() * 3000) + 100;} //set this to 0 for production
+		default: function() { 	//set this to 0 for production
+			return Math.floor(Math.random() * 3000) + 100;
+		}
 	},
-	imgurl: String,
+	imgurl: {
+		type: String,
+		default: function() { 	//set this to 0 for production
+			var url;
+			if(Math.floor(Math.random() * 2) == 0) {
+				url = 'http://api.randomuser.me/portraits/women/' + (Math.floor(Math.random() * 50) + 1) + '.jpg'
+			} else {
+				url = 'http://api.randomuser.me/portraits/men/' + (Math.floor(Math.random() * 50) + 1) + '.jpg'
+			}
+			return url;
+		}
+	},
 	vehicle: {
 		vehicleId: Number,
 		year: Number,
