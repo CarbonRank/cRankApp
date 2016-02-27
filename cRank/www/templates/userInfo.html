@@ -1,6 +1,6 @@
 <ion-view view-title="Registration: User Info" id="userInfo" >
 	<ion-content class="padding" ng-controller="UserInfoCtrl">
-		<form>
+		<form name="regForm">
 
 			<input type="text" ng-model="formData.username" name="username" placeholder="First Name" ng-minlength="4" required />
 			<div ng-messages="regForm.username.$error" ng-if="regForm.username.$dirty">
@@ -33,10 +33,8 @@
 		</form>
 
 		<br><br>
+		<div class="bar bar-footer bar-stable user-info-next" ng-click="processForm()">
+	  		<div class="title">Next</div>
+		</div>
 	</ion-content>
-
-	<div class="bar bar-footer bar-stable user-info-next" ng-click="processForm()">
-	  <div class="title">Next</div>
-	</div>
-	
 </ion-view>

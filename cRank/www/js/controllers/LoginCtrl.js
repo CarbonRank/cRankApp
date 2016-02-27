@@ -15,20 +15,11 @@ app.controller('LoginCtrl', function($scope, $http, $state) {
 		})
 		.success(function(data) {
 			console.log("data", data);
-
-			if (!data.success) {
-			  // if not successful, bind errors to error variables
-			  // $scope.errorName = data.errors.name;
-			  // $scope.errorSuperhero = data.errors.superheroAlias;
-			  $scope.message = data;
-			  // $scope.error = "NOT VALID INPUT(S). PLEASE TRY AGAIN."
+			if (data) {
+				$state.go('main.drive');
 			} else {
-			  // if successful, bind success message to message
-			  // $scope.message = data.message;
-			  $state.go('main');
+			   $scope.message = "Username or password is incorrect";
 			}
-
-			
 		});
 	};
 });
