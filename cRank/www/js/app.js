@@ -7,7 +7,13 @@
 // 'starter.controllers' is found in controllers.js
 var app = angular.module('cRank', ['ionic', 'cRank.services', 'ngCordova', 'uiGmapgoogle-maps', 'ngMessages'])
 
-.run(function($ionicPlatform) {
+.run(function($ionicPlatform, $rootScope, $state) {
+  $rootScope.logout = function(){
+    delete window.localStorage['cRank_user'];
+    $state.go("login");
+  };
+
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -98,8 +104,17 @@ var app = angular.module('cRank', ['ionic', 'cRank.services', 'ngCordova', 'uiGm
     }
   });
 
+  console.log("a user?", window.localStorage['cRank_user']);
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  //terrible auth
+  if(window.localStorage['cRank_user']){
+    $urlRouterProvider.otherwise('/main/drive');
+  }
+  else {
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/login');
+  }
+
+  
 
 });

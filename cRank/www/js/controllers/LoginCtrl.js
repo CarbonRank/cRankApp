@@ -1,5 +1,12 @@
 app.controller('LoginCtrl', function($scope, $http, $state, UserService) {
 
+	if(window.localStorage['cRank_user']){
+		// console.log("have a user!");
+		UserService.setUser(JSON.parse(window.localStorage['cRank_user']));
+		$state.go('main.drive');
+	}
+
+
 	$scope.message = "";
 	$scope.logData = {};
 

@@ -1,4 +1,7 @@
 <ion-view view-title="Drive" id="drive">
+  <ion-nav-buttons side="right">
+    <button class="button" id="logout" ng-click="logout()"><i class="ion ion-log-out"></i></button>
+  </ion-nav-buttons>
   <ion-content class="" scroll="false">
     <div name="start" id="drive_start" ng-show="!drive_state" ng-controller="DriveStartCtrl">
       <div class="table-container">
