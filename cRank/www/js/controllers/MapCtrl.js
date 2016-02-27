@@ -2,6 +2,8 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, u
 	var options = {timeout: 10000, enableHighAccuracy: true};
 
 	$scope.location = {};
+	$scope.map_active = false;
+
 	var updateInterval;
 
 	var updateLocation = function(cb){
@@ -89,6 +91,7 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, u
 	    		control: {}
 	    	};
 
+	    	$scope.map_active = true;
 
 
 	    	//initiate trip data

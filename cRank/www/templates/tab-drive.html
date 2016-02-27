@@ -10,7 +10,8 @@
 
     <div name="driving" id="drive_driving" ng-show="drive_state" ng-controller="DriveDrivingCtrl">
       <div id="map" ng-controller="MapCtrl" data-tap-disabled="true">
-        <ui-gmap-google-map center='map.center' zoom='map.zoom' control='map.control'>
+        <div id="driving_avatar" ng-show="map_active"><i class="ion ion-record"></i></div>
+        <ui-gmap-google-map center='map.center' zoom='map.zoom' control='map.control' options="{draggable: false}">
           <ui-gmap-map-control template="templates/end-drive.html" refresh="true" position="top-right" controller="MapControlCtrl" index="-1"></ui-gmap-map-control>
         </ui-gmap-google-map>
       </div>

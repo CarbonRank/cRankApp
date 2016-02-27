@@ -97,6 +97,16 @@ ion-side-menu {
 #drive_driving {
 	height: 100%;
 
+	#driving_avatar {
+		position: absolute;
+		top: 45vh;
+		left: 45vw;
+		font-size: 30px;
+		z-index: 10;
+		color: #fff;
+		text-shadow: 0 0 25px rgba(0,121,168,1);
+	}
+
 	#end_drive {
 		margin: 10px;
 		padding: 10px;
@@ -106,7 +116,7 @@ ion-side-menu {
 	}
 
 	#map {
-		height:60%;
+		height:100%;
 
 		.angular-google-map {
 			display:block;
@@ -121,6 +131,7 @@ ion-side-menu {
 		height:40%;
 		background:#fff;
 		text-align:right;
+		display:none;
 
 		table {
 			width: 100%;
