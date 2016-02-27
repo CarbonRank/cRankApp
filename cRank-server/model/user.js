@@ -20,6 +20,7 @@ var userSchema = new Schema({
 		required: 'Wtf. Need password yo.'
 	}, 
 	totalCarbon: Number,
+	imgurl: String,
 	vehicle: {
 		vehicleId: Number,
 		year: Number,

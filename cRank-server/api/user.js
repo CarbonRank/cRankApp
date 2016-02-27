@@ -11,7 +11,18 @@ router.get('/', function(req, res, next) {
     });
 });
 
-//register a new user
+
+
+/*register a new user 
+body: {
+    username
+    firstname
+    lastname
+    password
+    imgurl
+    vehicleid 
+}
+*/
 router.post('/', function(req, res, next) {
     var data = req.body;
     if(isValidUser(data)) {
@@ -28,6 +39,7 @@ router.post('/', function(req, res, next) {
             newUser.firstName = data.firstName;
             newUser.lastName = data.lastName;
             newUser.password = newUser.generateHash(data.password);
+            newUser.imgurl = data.imgurl;
 
             var url = 'http://www.fueleconomy.gov/ws/rest/vehicle/'+data.vehicleid;
             request(url, function(error, response, body) {
