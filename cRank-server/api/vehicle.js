@@ -30,6 +30,7 @@ router.get('/make', function(req, res, next) {
                 if(!err) {
                     var response = {results:[]}
                     var arr = result.menuItems.menuItem;
+                    if(!arr) return;
                     for(var i = 0; i<arr.length; i++) {
                         response.results.push(arr[i].value[0]);
                     }
