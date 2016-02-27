@@ -2,25 +2,47 @@
   <h1 class="title">Vehicle Registration</h1>
 </ion-header-bar>
 <ion-content>
-	<div ng-controller="RegisterCtrl">
+	<div ng-controller="RegisterCtrl" class="list">
+  <br><br><br>
+      <label class="item item-input item-select">
+      <div class="input-label">
+      Vehicle Year
+      </div>
   		<select ng-model="vehicleYear" ng-options="year for year in vehicleYearSelection" data-ng-change="getMake()">
     		<option value="">Select Car Year</option>
   		</select>
-  		<br>
+  		</label>
+      <br>
 
-  		<select ng-model="vehicleMake" ng-options="make for make in vehicleMakeSelection" data-ng-change="getModel()">
-    		<option value="">Select Car Make</option>
-  		</select>
-  		<br>
+      <label class="item item-input item-select">
+      <div class="input-label">
+      Vehuicle Make
+      </div>
+      <select ng-model="vehicleMake" ng-options="make for make in vehicleMakeSelection" data-ng-change="getModel()">
+        <option value="">Select Car Make</option>
+      </select>
+      </label>
+      <br>
 
-  		<select ng-model="vehicleModel" ng-options="model for model in vehicleModelSelection" data-ng-change="getSpecific()">
-    		<option value="">Select Car Model</option>
-  		</select>
-  		<br>
+      <label class="item item-input item-select">
+      <div class="input-label">
+      Vehuicle Make
+      </div>
+      <select ng-model="vehicleModel" ng-options="model for model in vehicleModelSelection" data-ng-change="getSpecific()">
+        <option value="">Select Car Model</option>
+      </select>
+      </label>
+      <br>
 
-  		<select ng-model="vehicleSpecific" ng-options="specific.text for specific in vehicleSpecificSelection" >
-    		<option value="">Select Car Specifics</option>
-  		</select>
+      <label class="item item-input item-select">
+      <div class="input-label">
+      Vehuicle Make
+      </div>
+      <select ng-model="vehicleSpecific" ng-options="specific.text for specific in vehicleSpecificSelection" >
+        <option value="">Select Car Specifics</option>
+      </select>
+      </label>
+      <br>
   	</div>
 
 
