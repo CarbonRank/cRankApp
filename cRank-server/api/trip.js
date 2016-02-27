@@ -41,6 +41,7 @@ router.get('/', function(req, res, next) {
     Trip
     .find({})
     .populate('_user')
+    .sort({'_id': -1})
     .exec(function (err, trips) {
         if (err) res.send(false);
         res.send(trips);
