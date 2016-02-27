@@ -5,6 +5,7 @@ var methodOverride 	= require('method-override');
 var mongoose 		= require('mongoose');
 var vehicleRoute	= require('./api/vehicle');
 var userRoute		= require('./api/user');
+var tripRoute       = require('./api/trip');
 
 var port = process.env.PORT || 3000;
 var dbusername;
@@ -35,6 +36,7 @@ app.use(methodOverride('X-HTTP-Method-Override'));
 
 app.use('/api/vehicle', vehicleRoute);
 app.use('/api/user', userRoute);
+app.use('/api/trip', tripRoute);
 
 app.listen(port);
 

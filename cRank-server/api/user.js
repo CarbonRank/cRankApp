@@ -29,8 +29,6 @@ router.delete('/', function(req, res, next) {
     }
 });
 
-
-
 /*register a new user 
 body: {
     username
