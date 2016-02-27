@@ -4,9 +4,7 @@ app.controller('UserInfoCtrl', function($scope, $http, $state) {
 
 	// process the form
 	$scope.processForm = function() {
-		$state.go('registration');
-
-		/*$http({
+		$http({
 			method  : 'POST',
 			url     : '/api/user/newuser',
 			data    : $scope.formData  // pass in data as strings
@@ -24,7 +22,7 @@ app.controller('UserInfoCtrl', function($scope, $http, $state) {
 			// }
 
 			$state.go('registration');
-		});*/
+		});
 	};
 
 });
