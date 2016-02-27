@@ -13,6 +13,9 @@ angular.module('cRank.services', [])
     setUserVehicleId: function(id) {
       user.vehicleid = id;
     },
+    setUser: function(user) {
+      user = user;
+    },
     getUser: function() {
       return user;
     }
