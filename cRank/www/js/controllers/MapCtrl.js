@@ -5,9 +5,17 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, u
 	var updateInterval;
 
 	var updateLocation = function(cb){
-		console.log("LOCATION UPDATING");
+		// console.log("LOCATION UPDATING");
 		$cordovaGeolocation.getCurrentPosition(options).then(function(position){
 			$scope.location = position.coords;
+
+			//add location point to data set
+			$rootScope.tripData.positionData.push({
+				lat: position.coords.latitude,
+				long: position.coords.longitude,
+				datetime: (new Date())
+			});
+
 			if(cb) cb(position.coords);
 		}, function(error){
 	      alert("Could not get location");
@@ -26,13 +34,18 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, u
 				long: pos.longitude,
 				datetime: (new Date())
 			},
+			positionData: [],
 			calculated: {
 
 			}
 		};
 	};
 
-	var updateTripData = function(){
+	var calcTripData = function(){
+		$rootScope.rawData = Motion.calculate($rootScope.tripData);
+		console.log("rawData", $rootScope.rowData);
+
+		/*
 		$rootScope.tripData.currentPos = {
 			lat: $scope.location.latitude,
 			long: $scope.location.longitude,
@@ -52,12 +65,22 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, u
 			miles: data.miles,
 			carbon: data.carbon
 		};
+		*/
 	};
 
 	$scope.$on('initDrive', function(){
 		$scope.$emit('loadingEvent', { action: 'start' });
 
+		$rootScope.tripData = { positionData: [] };
+
 		updateLocation(function(position){
+
+			// //add initial location point to data set
+			// $rootScope.tripData.positionData.push({
+			// 	lat: position.coords.latitude,
+			// 	long: position.coords.longitude,
+			// 	datetime: (new Date())
+			// });
 
 			$scope.map = { 
 	    		center: { latitude: $scope.location.latitude, longitude: $scope.location.longitude }, 
@@ -66,22 +89,34 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, u
 	    		control: {}
 	    	};
 
+
+
 	    	//initiate trip data
-	    	initTripData($scope.location);
+	    	// initTripData($scope.location);
 
 	    	updateInterval = $interval(function() {
 	    	        updateLocation();
 	    	        //update trip data
-	    	        updateTripData();
-	    	        console.log("TRIPDATA", JSON.stringify($rootScope.tripData));
-	    	}, 1000);
+	    	        // updateTripData();
+	    	        // console.log("TRIPDATA", JSON.stringify($rootScope.tripData));
+	    	}, 300);
 
 	    	$scope.$emit('loadingEvent', { action: 'end' });
 		});
 	});
 
-	$scope.$on('endDriving', function(){
+	$scope.$on('tripStopButtonClicked', function(ev){
+		ev.stopPropagation();
+
+		$scope.$emit('loadingEvent', { action: 'start', message: 'Crunching Data Set...' });
+
+		calcTripData();
+
 		$interval.cancel(updateInterval);
+
+		$scope.$emit('loadingEvent', { action: 'end' });
+
+		$scope.$emit('endDriving');
 	});
 
 

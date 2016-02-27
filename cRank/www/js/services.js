@@ -66,8 +66,12 @@ angular.module('cRank.services', [])
     var km = RAD * c;
 
     miles = km * MILES_PER_KM;
+    // debugger;
 
-    return Number(Math.round(miles+'e3')+'e-3');
+    var roundedNum = Number(Math.round(miles+'e3')+'e-3');
+    console.log("roundedNum", roundedNum);
+    if(isNaN(roundedNum)) return 0;
+    else return roundedNum;
   };
 
   var calcData = function(pos){
@@ -85,8 +89,47 @@ angular.module('cRank.services', [])
     }
   };
 
+  var calculate = function(data){
+    //lat1, long1, lat2, long2
+    var posData = data.positionData;
+    var GRAMS = 592.4666666666667, COST = 1.72; //TEMP
+
+    var totalMiles = 0;
+
+    // console.log("data", data)
+
+    for(var i = 0, j = 1; j < posData.length; i++, j++){
+      // console.log("i", posData[i]);
+      // console.log("j", posData[j]);
+
+      var pos = {
+        lat1: posData[i].lat,
+        lat2: posData[j].lat,
+        long1: posData[i].long,
+        long2: posData[j].long
+      };
+
+      // console.log("miles", getMiles(pos));
+
+      var miles = getMiles(pos);
+      console.log("miles", miles);
+
+      totalMiles += getMiles(pos);
+      // console.log("totalMiles", totalMiles);
+    }
+
+    console.log("totalMiles", totalMiles);
+
+    return {
+      miles: totalMiles,
+      carbon: (totalMiles * GRAMS)
+    }
+
+  };
+
   return {
     getMiles: getMiles,
-    calcData: calcData
+    calcData: calcData,
+    calculate: calculate
   }
 });

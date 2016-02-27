@@ -1,5 +1,5 @@
 app.controller('MapControlCtrl', function($scope) {
 	$scope.endDrive = function(){
-		$scope.$emit('endDriving');
+		$scope.$emit('tripStopButtonClicked');
 	}
 });
