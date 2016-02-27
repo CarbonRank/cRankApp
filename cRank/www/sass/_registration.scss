@@ -1,5 +1,5 @@
 #userInfo.pane {
-	background: #43CB4B !important;
+	@include linearGradient(#86AECC, #F3F6F8);
 
 	.user-info-next {
 		@include hoverAction();
