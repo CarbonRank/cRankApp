@@ -67,10 +67,26 @@ angular.module('cRank.services', [])
 
     miles = km * MILES_PER_KM;
 
-    return miles;
+    return Number(Math.round(miles+'e3')+'e-3');
+  };
+
+  var calcData = function(pos){
+    var miles = getMiles(pos);
+    var GRAMS = 592.4666666666667, COST = 1.72; //TEMP
+
+    var carbon = miles * GRAMS;
+
+    var est_cost = 0;
+
+    return {
+      miles: miles,
+      carbon: carbon,
+      est_cost: est_cost
+    }
   };
 
   return {
-    getMiles: getMiles
+    getMiles: getMiles,
+    calcData: calcData
   }
 });

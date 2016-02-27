@@ -46,8 +46,11 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, u
 			long2: $rootScope.tripData.currentPos.long,
 		}
 
+		var data = Motion.calcData(dObj);
+
 		$rootScope.tripData.calculated = {
-			miles: Motion.getMiles(dObj)
+			miles: data.miles,
+			carbon: data.carbon
 		};
 	};
 
@@ -58,7 +61,7 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, u
 
 			$scope.map = { 
 	    		center: { latitude: $scope.location.latitude, longitude: $scope.location.longitude }, 
-	    		zoom: 18,
+	    		zoom: 21,
 	    		disableDefaultUI: true,
 	    		control: {}
 	    	};
