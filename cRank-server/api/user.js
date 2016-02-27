@@ -11,15 +11,6 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.get('/', function(req, res, next) {
-    User.find({}, function(err, users).sort({totalCarbon: descending}) {
-        res.send(users);
-    });
-});
-
-
-
-
 /*register a new user 
 body: {
     username

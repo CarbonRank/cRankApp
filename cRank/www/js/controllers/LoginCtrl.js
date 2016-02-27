@@ -25,7 +25,7 @@ app.controller('LoginCtrl', function($scope, $http, $state) {
 			} else {
 			  // if successful, bind success message to message
 			  // $scope.message = data.message;
-			  $state.go('registration');
+			  $state.go('main');
 			}
 
 			
