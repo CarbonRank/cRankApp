@@ -4,7 +4,7 @@ app.controller('RegisterCtrl', function($scope, $http, $state, UserService) {
         user = UserService.getUser();
         $http({
             method: 'GET',
-            url: '/api/vehicle/year',
+            url: 'http://crank-server.herokuapp.com/api/vehicle/year',
         }).success(function (result) {
             $scope.vehicleYearSelection = result.results;
         });
@@ -15,7 +15,7 @@ app.controller('RegisterCtrl', function($scope, $http, $state, UserService) {
 	$scope.getMake = function () {
 		$http({
         	method: 'GET',
-        	url: '/api/vehicle/make?year=' + $scope.vehicleYear,
+        	url: 'http://crank-server.herokuapp.com/api/vehicle/make?year=' + $scope.vehicleYear,
 		}).success(function (result) {
     		$scope.vehicleMakeSelection = result.results;
 		});
@@ -24,7 +24,7 @@ app.controller('RegisterCtrl', function($scope, $http, $state, UserService) {
 	$scope.getModel = function () {
 		$http({
         	method: 'GET',
-        	url: '/api/vehicle/model?year=' + $scope.vehicleYear + '&make=' + $scope.vehicleMake,
+        	url: 'http://crank-server.herokuapp.com/api/vehicle/model?year=' + $scope.vehicleYear + '&make=' + $scope.vehicleMake,
 		}).success(function (result) {
     		$scope.vehicleModelSelection = result.results;
 		});
@@ -33,7 +33,7 @@ app.controller('RegisterCtrl', function($scope, $http, $state, UserService) {
     $scope.getSpecific = function () {
         $http({
             method: 'GET',
-            url: '/api/vehicle/options?year=' + $scope.vehicleYear + '&make=' + $scope.vehicleMake + '&model=' + $scope.vehicleModel,
+            url: 'http://crank-server.herokuapp.com/api/vehicle/options?year=' + $scope.vehicleYear + '&make=' + $scope.vehicleMake + '&model=' + $scope.vehicleModel,
         }).success(function (result) {
             $scope.vehicleSpecificSelection = result.results;
         });
@@ -47,7 +47,7 @@ app.controller('RegisterCtrl', function($scope, $http, $state, UserService) {
         console.log("FINAL: ", UserService.getUser());
         $http({
             method: 'POST',
-            url: '/api/user',
+            url: 'http://crank-server.herokuapp.com/api/user',
             data: UserService.getUser()
         }).success(function (result) {
             console.log(result);

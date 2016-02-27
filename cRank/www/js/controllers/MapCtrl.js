@@ -137,11 +137,10 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, u
 
     	$http({
     		method: 'POST',
-    		url: '/api/trip',
+    		url: 'http://crank-server.herokuapp.com/api/trip',
     		data: tripObj
     	})
     	.success(function(data) {
-    		debugger;
     		if (data) {
     			$scope.$emit('endDriving');
     		} else {

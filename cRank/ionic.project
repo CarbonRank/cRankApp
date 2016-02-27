@@ -1,10 +1,4 @@
 {
   "name": "cRank",
-  "app_id": "",
-  "proxies": [
-    {
-      "path": "/api",
-      "proxyUrl": "http://crank-server.herokuapp.com/api"
-    }
-  ]
+  "app_id": ""
 }

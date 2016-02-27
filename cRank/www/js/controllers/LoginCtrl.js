@@ -17,7 +17,7 @@ app.controller('LoginCtrl', function($scope, $http, $state, UserService) {
 	$scope.processLoginForm = function() {
 		$http({
 			method  : 'POST',
-			url     : '/api/user/login',
+			url     : 'http://crank-server.herokuapp.com/api/user/login',
 			data    : $scope.logData  // pass in data as strings
 		})
 		.success(function(data) {

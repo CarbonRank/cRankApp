@@ -5,9 +5,9 @@
 		<img id="cRankPhoto" src="/img/c-logo.png" style="width: 60%;" title="">
 	</h1>
 
-	<form name="regForm">
+	<form name="regForm" action="{{processLoginForm()}}">
 
-		<input type="text" ng-model="logData.username" name="username" placeholder="Username"  ng-minlength="4" id="logInUser" required/>
+		<input type="text" ng-model="logData.username" name="username" autocapitalize=off placeholder="Username"  ng-minlength="4" id="logInUser" required/>
 		<div ng-messages="logForm.username.$error" ng-if="logForm.username.$dirty">
 			<div ng-message="required" class="errorMess">This field is required</div>
 		</div>
@@ -17,6 +17,8 @@
 		<div ng-messages="logForm.password.$error" ng-if="logForm.password.$dirty">
   			<div ng-message="required" class="errorMess">This field is required</div>
 		</div>
+
+		<button type="submit" hidden>button</button>
 	
 	</form>	
 
