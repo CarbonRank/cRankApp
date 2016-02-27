@@ -20,7 +20,10 @@ var userSchema = new Schema({
 		required: 'Wtf. Need password yo.'
 	}, 
 	totalCarbon: Number,
-	vehicleId: Number
+	vehicleId: {
+		type: Number,
+		default: null
+	}
 });
 
 // generating a hash

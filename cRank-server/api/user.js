@@ -47,7 +47,6 @@ router.post('/login', function(req, res, next) {
     User.findOne({username: userData.username}, function(err, user) {
         if(err) {res.send(err);return;}
         if(!user) {
-            console.log('user does not exist');
             res.send("user does not exist.");
             return;
         }
@@ -56,6 +55,28 @@ router.post('/login', function(req, res, next) {
             return;
         }
         res.send(user);
+    });
+});
+
+//login
+router.post('/addvehicle', function(req, res, next) {
+    var userid = req.query.userid;
+    var vehicleId = req.query.vehicleid;
+    if(!userid || !vehicleId) {
+        res.send('missing userid or vehicleid');
+        return;
+    }
+    User.findById(userid, function(err, user) {
+        if(err) {res.send(err);return;}
+        if(!user) {
+            res.send("user does not exist.");
+            return;
+        }
+        user.vehicleId = vehicleId;
+        user.save(function (err) {
+            if(err) {res.send(err);return;}
+            res.send(user);
+        });   
     });
 });
 
