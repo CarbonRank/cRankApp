@@ -1,4 +1,4 @@
-app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, uiGmapGoogleMapApi, $interval, $window, $rootScope, Motion) {
+app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, uiGmapGoogleMapApi, $interval, $window, $rootScope, Motion, $http, UserService) {
 	var options = {timeout: 10000, enableHighAccuracy: true};
 
 	$scope.location = {};
@@ -119,7 +119,37 @@ app.controller('MapCtrl', function($scope, $cordovaGeolocation, $ionicLoading, u
 
 		$scope.$emit('loadingEvent', { action: 'end' });
 
-		$scope.$emit('endDriving');
+		//save trip to DB
+
+		/*
+		userid: String,
+    startTime: Number, 
+    endTime: Number,
+    totalTripC: Number
+    */
+
+    	var tripObj = {
+    		userid: UserService.getUser()["_id"],
+    		startTime: (new Date($rootScope.tripData.positionData[0].datetime)).getTime(),
+    		endTime: (new Date($rootScope.tripData.positionData[$rootScope.tripData.positionData.length - 1].datetime)).getTime(),
+    		totalTripC: Math.floor($rootScope.rawData.carbon)
+    	};
+
+    	$http({
+    		method: 'POST',
+    		url: '/api/trip',
+    		data: tripObj
+    	})
+    	.success(function(data) {
+    		debugger;
+    		if (data) {
+    			$scope.$emit('endDriving');
+    		} else {
+    		 	console.log("COULD NOT POST TRIP");
+    		}
+    	});
+
+		
 	});
 
 

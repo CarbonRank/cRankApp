@@ -1,4 +1,7 @@
-app.controller('MainCtrl', function($scope, $ionicLoading) {
+app.controller('MainCtrl', function($scope, $ionicLoading, UserService) {
+	UserService.setUser(JSON.parse(window.localStorage['cRank_user']));
+
+
 	$scope.$on('loadingEvent', function(ev, args){
 		switch(args.action){
 			case "start":

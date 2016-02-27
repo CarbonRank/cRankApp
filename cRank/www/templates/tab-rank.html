@@ -3,7 +3,7 @@
     <div class="list card">
 
       <a class="item item-avatar" href="#" ng-repeat="user in rankedUsers">
-        <img src="http://api.randomuser.me/portraits/women/49.jpg">
+        <img ng-src="{{user.imgurl}}">
         <h2>{{user.firstName}} {{user.lastName}}</h2>
         <p>{{user.totalCarbon}} grams of Carbon</p>
         <span class="rank">{{$index + 1}}</span>

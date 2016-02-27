@@ -1,8 +1,10 @@
 <ion-view view-title="Activity">
   <ion-content class="padding">
-    <div class="card">
+    <div class="card" ng-repeat="trip in usersTrips">
       <div class="item item-text-wrap">
-        This is some trip
+      	<h3>{{trip._user.firstName}} {{trip._user.lastName}}</h3>
+        <h3>{{trip.totalTripC}} grams of Carbon</h3>
+        <h4>{{trip.startTime | date:'medium' }}</h4>
       </div>
     </div>
   </ion-content>
