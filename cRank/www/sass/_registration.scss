@@ -4,4 +4,11 @@
 	.user-info-next {
 		@include hoverAction();
 	}
+
+	input {
+		width:100%;
+		text-align: center; 
+		margin-top: 2.5%;
+		padding: 10px;
+	}
 }
