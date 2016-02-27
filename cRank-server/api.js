@@ -1,7 +1,22 @@
-module.exports = function(app, request) {
+module.exports = function(app, request, parseString) {
 
-    app.get('/', function(req, res) {
-        res.send('hello world');
+    app.get('/api/vehicle/year', function(req, res) {
+        var url = 'http://www.fueleconomy.gov/ws/rest/vehicle/menu/year';
+        request(url, function(error, response, body) {
+            parseString(body, function(err, result) {
+                if(!err) {
+                    var response = {results:[]}
+                    var arr = result.menuItems.menuItem;
+                    for(var i = 0; i<arr.length; i++) {
+                        response.results.push(parseInt(arr[i].value[0]));
+                    }
+                    res.send(response);
+                } else {
+                    res.send(err);
+                }
+            });
+        });
+        
     });
 
     app.get('/api/something', function(req, res) {
