@@ -11,6 +11,13 @@ router.get('/', function(req, res, next) {
     });
 });
 
+router.get('/', function(req, res, next) {
+    User.find({}, function(err, users).sort({totalCarbon: descending}) {
+        res.send(users);
+    });
+});
+
+
 
 
 /*register a new user 
@@ -40,7 +47,7 @@ router.post('/', function(req, res, next) {
             newUser.lastName = data.lastName;
             newUser.password = newUser.generateHash(data.password);
             newUser.imgurl = data.imgurl;
-            newUseer.totalCarbon = 0;
+            newUser.totalCarbon = 0;
 
             var url = 'http://www.fueleconomy.gov/ws/rest/vehicle/'+data.vehicleid;
             request(url, function(error, response, body) {
@@ -116,7 +123,7 @@ router.post('/login', function(req, res, next) {
 //             }
 //         });
 
-//         User.findByIdAndUpdate( {userID}, { total_CO2 += carbon, total_miles += miles}, function(err, user) {
+//         User.findByIdAndUpdate( {userID}, { total_Carbon : total_Carbon + carbon, total_miles : total_miles + miles}, function(err, user) {
 //             if(err) {
 //                 res.send(err);
 //             }
