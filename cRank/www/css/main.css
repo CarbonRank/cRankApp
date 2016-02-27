@@ -1,3 +1,10 @@
+body {
+  font-family: "Source Sans Pro" !important; }
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6, input, button, select, textarea {
+  font-family: "Source Sans Pro" !important; }
+
 .vertical-align {
   position: relative;
   top: 50%;
@@ -5,25 +12,100 @@
   -ms-transform: translateY(-50%);
   transform: translateY(-50%); }
 
-.container.center {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center; }
-
-#drive_start {
+.table-container {
   display: table !important;
   width: 100% !important;
   height: 90% !important; }
+  .table-container .center {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center; }
+
+.pane, .view {
+  background: #43CB4B !important;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #43CB4B 0%, #0079A8 100%) !important;
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #43CB4B), color-stop(100%, #0079A8)) !important;
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #43CB4B 0%, #0079A8 100%) !important;
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #43CB4B 0%, #0079A8 100%) !important;
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #43CB4B 0%, #0079A8 100%) !important;
+  /* IE10+ */
+  background: linear-gradient(to bottom, #43CB4B 0%, #0079A8 100%) !important;
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ) !important;
+  /* IE6-9 */ }
+
+#drive_start {
+  width: 100%;
+  height: 100%; }
   #drive_start #start_drive {
     text-align: center; }
     #drive_start #start_drive button {
       border: none;
-      background: green;
-      color: #fff;
+      background: #fff;
+      color: #000;
       width: 200px;
       height: 200px;
       border-radius: 100px;
-      -webkit-transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2;
-      transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2; }
+      font-size: 18px;
+      opacity: 1;
+      transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2s;
+      -webkit-transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2s; }
+      #drive_start #start_drive button:hover {
+        transform: scale(1.05, 1.05); }
       #drive_start #start_drive button:active {
-        background: #00b300; }
+        transform: scale(0.97, 0.97);
+        outline: 0; }
+      #drive_start #start_drive button:focus {
+        outline: 0; }
+      #drive_start #start_drive button:active {
+        opacity: 0.8; }
+
+#drive_driving {
+  height: 100%; }
+  #drive_driving #end_drive {
+    margin: 10px;
+    padding: 10px;
+    border: 0;
+    background: #fff;
+    transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2s;
+    -webkit-transition: all cubic-bezier(0.43, 0.84, 0.79, 0.99) 0.2s; }
+    #drive_driving #end_drive:hover {
+      transform: scale(1.05, 1.05); }
+    #drive_driving #end_drive:active {
+      transform: scale(0.97, 0.97);
+      outline: 0; }
+    #drive_driving #end_drive:focus {
+      outline: 0; }
+  #drive_driving #map {
+    height: 60%; }
+    #drive_driving #map .angular-google-map {
+      display: block;
+      height: 100%; }
+    #drive_driving #map .angular-google-map-container {
+      height: 100%; }
+  #drive_driving #driving_details {
+    height: 40%;
+    background: #fff;
+    text-align: right; }
+    #drive_driving #driving_details table {
+      width: 100%;
+      height: 100%; }
+      #drive_driving #driving_details table td {
+        vertical-align: middle;
+        text-align: center; }
+    #drive_driving #driving_details .row {
+      height: 50%; }
+      #drive_driving #driving_details .row .col {
+        text-align: center; }
+    #drive_driving #driving_details .data {
+      display: inline-block;
+      text-align: right; }
+    #drive_driving #driving_details .metric {
+      font-size: 35px;
+      display: block;
+      padding-bottom: 3px; }

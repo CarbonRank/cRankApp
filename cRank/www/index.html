@@ -3,7 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
     <title></title>
+
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600' rel='stylesheet' type='text/css'>
 
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="css/main.min.css" rel="stylesheet">
@@ -14,6 +17,12 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+
+    <!-- other stuff -->
+    <script src='lib/lodash/dist/lodash.min.js'></script>
+    <script src='lib/angular-simple-logger/dist/angular-simple-logger.min.js'></script>
+    <script src='lib/angular-google-maps/dist/angular-google-maps.min.js'></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -28,6 +37,8 @@
     <script src="js/controllers/ActivityCtrl.js"></script>
     <script src="js/controllers/StatsCtrl.js"></script>
     <script src="js/controllers/RegisterCtrl.js"></script>
+    <script src="js/controllers/MapCtrl.js"></script>
+    <script src="js/controllers/MapControlCtrl.js"></script>
     <script src="js/services.js"></script>
   </head>
   <body ng-app="cRank">
