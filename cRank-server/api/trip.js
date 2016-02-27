@@ -51,7 +51,7 @@ function isValidTrip(trip) {
     if(!trip.userid) return false;
     if(!trip.startTime) return false;
     if(!trip.endTime) return false;
-    if(trip.totalTripC != null) return false;
+    if(trip.totalTripC == null) return false;
     return true;
 }
 
