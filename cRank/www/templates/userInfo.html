@@ -1,15 +1,15 @@
 <form ng-submit="processForm()">
 
-	<input type="text" model="formData.username" name="username" placeholder="Username" 
+	<input type="text" ng-model="formData.username" name="username" placeholder="Username" 
 	style="width:100%;text-align: center; margin-top: 2.5%;"></input>
 	
-	<input type="text" model="formData.first_name" name="firstName" placeholder="First Name" 
+	<input type="text" ng-model="formData.firstName" name="firstName" placeholder="First Name" 
 	style="width:100%;text-align: center; margin-top: 2.5%;"></input>
 	
-	<input type="text" model="formData.last_name" name="lastName" placeholder="Last Name" 
+	<input type="text" ng-model="formData.lastName" name="lastName" placeholder="Last Name" 
 	style="width:100%;text-align: center; margin-top: 2.5%;"></input>
 	
-	<input type="password" model="formData.password" name="password" placeholder="Password" 
+	<input type="password" ng-model="formData.password" name="password" placeholder="Password" 
 	style="width:100%;text-align: center; margin-top: 2.5%;"></input>
 	
 	<button id="next" 

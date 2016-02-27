@@ -12,6 +12,7 @@ router.get('/', function(req, res, next) {
 //register a new user
 router.post('/newuser', function(req, res, next) {
     var userData = req.body;
+    console.log("userData", userData);
     if(isValidUser(userData)) {
         User.findOne({username: userData.username}, function(err, user) {
             if(err) {console.log('err: ', err);res.send(err);return;}
@@ -33,6 +34,7 @@ router.post('/newuser', function(req, res, next) {
             }
         });
     } else {
+        // console.log(req.query.username);
         res.send('not a valid user. check data');
     }
 });
