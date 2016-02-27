@@ -19,6 +19,7 @@ router.post('/', function(req, res, next) {
         newTrip.startTime = trip.startTime;
         newTrip.endTime = trip.endTime;
         newTrip.totalTripC = trip.totalTripC;
+        newTrip._user = trip.userid;
         User.update(
             { _id: trip.userid }, 
             { $inc: { totalCarbon: trip.totalTripC}},
@@ -26,18 +27,22 @@ router.post('/', function(req, res, next) {
             function(cb) {
                 console.log('saved user?');
                 newTrip.save(function (err) {
-                    if(err) {res.send(err);return;}
+                    if(err) {res.send(false);return;}
                     res.send(newTrip);
                 });
             }
         );
     } else {
-        res.send('not valid trip. check data');
+        res.send(false);
     }
 });
 
 router.get('/', function(req, res, next) {
-    Trip.find({}, function(err, trips) {
+    Trip
+    .find({})
+    .populate('_user')
+    .exec(function (err, trips) {
+        if (err) res.send(false);
         res.send(trips);
     });
 });
@@ -46,7 +51,7 @@ function isValidTrip(trip) {
     if(!trip.userid) return false;
     if(!trip.startTime) return false;
     if(!trip.endTime) return false;
-    if(!trip.totalTripC) return false;
+    if(trip.totalTripC == null) return false;
     return true;
 }
 
