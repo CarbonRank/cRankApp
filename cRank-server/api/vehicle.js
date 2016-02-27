@@ -79,7 +79,7 @@ router.get('/options', function(req, res, next) {
                     var arr = result.menuItems.menuItem;
                     for(var i = 0; i<arr.length; i++) {
                         var option = {
-                            vechicleId: parseInt(arr[i].value[0]),
+                            vehicleid: parseInt(arr[i].value[0]),
                             text: arr[i].text[0]
                         }
                         response.results.push(option);
