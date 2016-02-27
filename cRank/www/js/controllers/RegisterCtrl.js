@@ -1,4 +1,4 @@
-app.controller('RegisterCtrl', function($scope, $http, UserService) {
+app.controller('RegisterCtrl', function($scope, $http, $state, UserService) {
     var user;
     $scope.init = function() {
         user = UserService.getUser();
@@ -52,6 +52,7 @@ app.controller('RegisterCtrl', function($scope, $http, UserService) {
         }).success(function (result) {
             console.log(result);
         });
+        $state.go('main.drive');
     }
 
     $scope.init();
