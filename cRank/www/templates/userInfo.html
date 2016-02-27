@@ -1,6 +1,13 @@
 <ion-view view-title="Registration: User Info" id="userInfo" >
 	<ion-content class="padding" ng-controller="UserInfoCtrl">
 		<form>
+
+			<input type="text" ng-model="formData.username" name="username" placeholder="First Name" ng-minlength="4" required />
+			<div ng-messages="regForm.username.$error" ng-if="regForm.username.$dirty">
+  				<div ng-message="required" class="errorMess">This field is required</div>
+  				<div ng-message="minlength" class="errorMess">Username must be over 3 characters</div>
+			</div>
+
 			<input type="text" ng-model="formData.firstName" name="firstName" placeholder="First Name" ng-minlength="4" required />
 			<div ng-messages="regForm.firstName.$error" ng-if="regForm.firstName.$dirty">
   				<div ng-message="required" class="errorMess">This field is required</div>
@@ -26,9 +33,10 @@
 		</form>
 
 		<br><br>
+	</ion-content>
+
 	<div class="bar bar-footer bar-stable user-info-next" ng-click="processForm()">
 	  <div class="title">Next</div>
 	</div>
-	</ion-content>
 	
 </ion-view>
