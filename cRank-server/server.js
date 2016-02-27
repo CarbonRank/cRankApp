@@ -11,11 +11,12 @@ var dbusername;
 var dbpass;
 try {
     var config = require('./config');
+    console.log("Using config file.");
     dbusername = config.dbusername;
     dbpass = config.dbpass;
 } catch(err){
     if(err.code === 'MODULE_NOT_FOUND'){
-    	console.log("No config file. Using env vars");
+    	console.log("Config file not found. Using env vars");
     	dbusername = process.env.DBUSERNAME;
     	dbpass = process.env.DBPASS;
     }
