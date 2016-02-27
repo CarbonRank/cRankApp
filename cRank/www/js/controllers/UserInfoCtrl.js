@@ -1,28 +1,10 @@
-app.controller('UserInfoCtrl', function($scope, $http, $state) {
+app.controller('UserInfoCtrl', function($scope, $http, $state, UserService) {
 
-	$scope.formData = {};
-
+	console.log("userinfo scope", $scope);
 	// process the form
 	$scope.processForm = function() {
-		$http({
-			method  : 'POST',
-			url     : '/api/user/newuser',
-			data    : $scope.formData  // pass in data as strings
-		})
-		.success(function(data) {
-			console.log("data", data);
-
-			// if (!data.success) {
-			//   // if not successful, bind errors to error variables
-			//   $scope.errorName = data.errors.name;
-			//   $scope.errorSuperhero = data.errors.superheroAlias;
-			// } else {
-			//   // if successful, bind success message to message
-			//   $scope.message = data.message;
-			// }
-
-			$state.go('registration');
-		});
+		UserService.setUserInfo($scope.username, $scope.firstName, $scope.lastName, $scope.password);
+		$state.go('registration');
 	};
 
 });
