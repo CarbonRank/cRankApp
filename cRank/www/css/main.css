@@ -12,6 +12,26 @@ h1, h2, h3, h4, h5, h6,
   -ms-transform: translateY(-50%);
   transform: translateY(-50%); }
 
+.tab-nav.tabs .tab-item.tab-item-active {
+  color: #0079A8; }
+
+ion-side-menu {
+  background: #3C3C3C; }
+  ion-side-menu ion-header-bar.bar-header {
+    background: #3C3C3C !important;
+    border: 0; }
+  ion-side-menu .item {
+    border: 0; }
+    ion-side-menu .item .item-content {
+      background-color: #616161;
+      border: 0;
+      color: #fff; }
+      ion-side-menu .item .item-content.activated {
+        background-color: #484848;
+        border: 0; }
+  ion-side-menu .scroll-content {
+    background: #3C3C3C; }
+
 .table-container {
   display: table !important;
   width: 100% !important;
@@ -127,3 +147,37 @@ h1, h2, h3, h4, h5, h6,
     text-align: center;
     margin-top: 2.5%;
     padding: 10px; }
+
+#rank.pane {
+  background: #7474BF !important;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #7474BF 0%, #348AC7 100%) !important;
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #7474BF), color-stop(100%, #348AC7)) !important;
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #7474BF 0%, #348AC7 100%) !important;
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #7474BF 0%, #348AC7 100%) !important;
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #7474BF 0%, #348AC7 100%) !important;
+  /* IE10+ */
+  background: linear-gradient(to bottom, #7474BF 0%, #348AC7 100%) !important;
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ) !important;
+  /* IE6-9 */ }
+  #rank.pane .list > a.item-avatar {
+    padding-right: 72px; }
+    #rank.pane .list > a.item-avatar > span {
+      position: absolute;
+      top: 25px;
+      right: 16px;
+      max-width: 40px;
+      max-height: 40px;
+      width: 100%;
+      height: 100%;
+      font-size: 20px;
+      text-align: right; }
+      #rank.pane .list > a.item-avatar > span:before {
+        content: "#"; }
+  #rank.pane .list > a span.rank:before {
+    content: "#"; }
